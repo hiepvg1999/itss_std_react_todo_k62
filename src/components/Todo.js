@@ -28,6 +28,7 @@ function Todo() {
   // ]);
   const [items, putItems, clearItems] = useStorage();
   
+  
   const handleCheck = checked => {
     const newItems = items.map(item => {
       if (item.key === checked.key) {
@@ -54,7 +55,7 @@ function Todo() {
   return (
     <div className="panel">
       <div className="panel-heading">
-        ITSS ToDoアプリ
+        ITSSToDoアプリ
       </div>
       <Input onAdd={handleAdd} />
       <Filter
@@ -79,7 +80,5 @@ function Todo() {
     </div>
   );
 }
-
-
 
 export default Todo;
