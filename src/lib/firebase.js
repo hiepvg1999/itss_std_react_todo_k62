@@ -1,11 +1,11 @@
 import firebase from 'firebase'
 const firebaseConfig = {
-  apiKey: "AIzaSyDqDwDwfzNVXG6zPrSeNqlN8bnFf3K9BMU",
-  authDomain: "fir-sample-2202a.firebaseapp.com",
-  projectId: "fir-sample-2202a",
-  storageBucket: "fir-sample-2202a.appspot.com",
-  messagingSenderId: "21041679879",
-  appId: "1:21041679879:web:6874239abfaf18b0b6e4a2"
+  apiKey: "AIzaSyBbSUt80EXS7YzrgVMYLIUuq6ic1ZviU24",
+  authDomain: "fb-sample-d3ee5.firebaseapp.com",
+  projectId: "fb-sample-d3ee5",
+  storageBucket: "fb-sample-d3ee5.appspot.com",
+  messagingSenderId: "209719356611",
+  appId: "1:209719356611:web:e070492c24be94da5b0676"
 };
 firebase.initializeApp(firebaseConfig);
 
@@ -53,3 +53,28 @@ export const clearFirebaseItem = async (item) => {
         console.log(err);
     });
 };
+
+export const uiConfig = {
+    signInFlow: 'popup',
+    signInSuccessUrl: "/",
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    ],
+}
+
+export const storeUserInfo = async (user) => {
+    const { uid } = user;
+    const userDoc = await db.collection("users").doc(uid).get();
+    if (!userDoc.exists) {
+      await db.collection("users").doc(uid).set({ name: user.displayName });
+      return {
+        name: user.displayName,
+        id: uid,
+      };
+    } else {
+      return {
+        id: uid,
+        ...userDoc.data(),
+      };
+    }
+  } 

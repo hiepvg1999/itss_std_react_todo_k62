@@ -17,7 +17,6 @@ import Filter from './Filter';
 import useFbStorage from '../hooks/fbStorage';
 
 /* ライブラリ */
-import {getKey} from "../lib/util";
 
 function Todo() {
   // const [items, putItems] = React.useState([
